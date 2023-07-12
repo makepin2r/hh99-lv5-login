@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../../modules/cookie";
 import client from "../../../modules/client";
+import { StInput, Wrapper, StHeader, StBtnPrimary, StBtnSecondary, StLabel, StPadding, StInputBox } from "../../../styles/styled";
 
 /** 로그인 페이지 컴포넌트 */
 const Login = () => {
@@ -50,36 +51,37 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <Wrapper>
             {!getCookie("loginToken") && <Navigate to="/login" />}
-            <h3>Login</h3>
+            <StHeader>Login</StHeader>
             <form onSubmit={handleSubmit}>
-                <p>
-                    <span>ID </span>{" "}
-                    <input
+                <StInputBox>
+                    <StLabel>ID </StLabel>{" "}
+                    <StInput
                         value={input.id}
                         name="id"
                         onChange={handleInput}
                         type="text"
                         placeholder="ID를 입력해주세요..."
                     />
-                </p>
-                <p>
-                    <span>PW </span>{" "}
-                    <input
+                </StInputBox>
+                <StInputBox>
+                    <StLabel>PW </StLabel>{" "}
+                    <StInput
                         value={input.pw}
                         name="pw"
                         onChange={handleInput}
                         type="password"
                         placeholder="비밀번호를 입력해주세요..."
                     />
-                </p>
-                <button type="submit">Login!</button>
+                </StInputBox>
+                <StPadding />
+                <StBtnPrimary type="submit">Login!</StBtnPrimary>
             </form>
             <Link to="/register">
-                <button>회원가입 이동</button>
+                <StBtnSecondary>회원가입 이동</StBtnSecondary>
             </Link>
-        </div>
+        </Wrapper>
     );
 };
 

@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import client from "../../../modules/client";
+import {
+    StInput,
+    Wrapper,
+    StHeader,
+    StBtnPrimary,
+    StBtnSecondary,
+    StLabel,
+    StPadding,
+    StInputBox,
+} from "../../../styles/styled";
 
 function Signup() {
     const [input, SetInput] = useState({
@@ -30,33 +40,34 @@ function Signup() {
     };
 
     return (
-        <>
-            <h3>회원가입</h3>
-            <p>
-                <span>ID </span>
-                <input
+        <Wrapper>
+            <StHeader>회원가입</StHeader>
+            <StInputBox>
+                <StLabel>ID </StLabel>
+                <StInput
                     value={input.id}
                     name="id"
                     onChange={handleInput}
                     type="text"
                     placeholder="ID를 입력해주세요..."
                 />
-            </p>
-            <p>
-                <span>PW </span>
-                <input
+            </StInputBox>
+            <StInputBox>
+                <StLabel>PW </StLabel>
+                <StInput
                     value={input.pw}
                     name="pw"
                     onChange={handleInput}
                     type="password"
                     placeholder="비밀번호를 입력해주세요..."
                 />
-            </p>
-            <button onClick={register}>회원가입!</button>
-            <button>
-                <Link to="/login">로그인하러 가기</Link>
-            </button>
-        </>
+            </StInputBox>
+            <StPadding />
+            <StBtnPrimary onClick={register}>회원가입!</StBtnPrimary>
+            <Link to="/login">
+                <StBtnSecondary>로그인하러 가기</StBtnSecondary>
+            </Link>
+        </Wrapper>
     );
 }
 

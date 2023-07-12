@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../../modules/cookie";
+import { Wrapper, StHeader, StBtnPrimary } from "../../../styles/styled";
 
 /** 로그인 화면 컴포넌트 */
 const Home = () => {
@@ -12,11 +13,11 @@ const Home = () => {
     };
 
     return (
-        <>
+        <Wrapper>
             {!getCookie("loginToken") && <Navigate to="/login" />}
-            <h3>Home</h3>
-            <button onClick={logout}>로그아웃</button>
-        </>
+            <StHeader>Home</StHeader>
+            <StBtnPrimary onClick={logout}>로그아웃</StBtnPrimary>
+        </Wrapper>
     );
 };
 
