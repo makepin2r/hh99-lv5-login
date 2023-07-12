@@ -7,7 +7,7 @@ function App() {
     return (
         <BrowserRouter>
             <GlobalStyle />
-            <Router/>
+            <Router />
         </BrowserRouter>
     );
 }

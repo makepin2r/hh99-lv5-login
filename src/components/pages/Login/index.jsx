@@ -15,13 +15,10 @@ const Login = () => {
     /** id, pw 정보를 서버에 전송하여 토큰 반환받는 함수 */
     const login = async () => {
         try {
-            const res = await client.post(
-                `/login`,
-                {
-                    id: input.id,
-                    password: input.pw,
-                }
-            );
+            const res = await client.post(`/login`, {
+                id: input.id,
+                password: input.pw,
+            });
             console.log(res.data);
             // 아이디값과 토큰 저장
             const jwt = res.data.token;
@@ -29,19 +26,19 @@ const Login = () => {
             navigate("/");
         } catch (error) {
             window.alert(`Error: ${error.response.data.message}`); // 에러 메시지 팝업
-            SetInput({ id: "", pw: "", }); // 인풋 초기화
+            SetInput({ id: "", pw: "" }); // 인풋 초기화
         }
     };
 
     /** 로그인 버튼 클릭시 함수 */
     const handleSubmit = (e) => {
-      if(input.id === "" || input.pw === ""){
-        // id 또는 password 둘 중 하나를 입력하지 않았을 때
-        window.alert("아이디와 비밀번호를 모두 입력해주세요.");
-      }else {
-        e.preventDefault();
-        login();
-      }
+        if (input.id === "" || input.pw === "") {
+            // id 또는 password 둘 중 하나를 입력하지 않았을 때
+            window.alert("아이디와 비밀번호를 모두 입력해주세요.");
+        } else {
+            e.preventDefault();
+            login();
+        }
     };
 
     /** input state 처리 함수 */
@@ -54,7 +51,7 @@ const Login = () => {
 
     return (
         <div>
-            {!getCookie('loginToken') && <Navigate to="/login" />}
+            {!getCookie("loginToken") && <Navigate to="/login" />}
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
                 <p>
